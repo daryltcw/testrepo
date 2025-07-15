@@ -1,33 +1,25 @@
-// Global scope
-var globalVar = "I'm a global variable";
-let globalLet = "I'm also global, but scoped with let";
-const globalConst = "I'm a global constant";
-
 {
-// Block scope
-var blockVar = "I'm a block-scoped var";
-let blockLet = "I'm a block-scoped let";
-const blockConst = "I'm a block-scoped const";
+    // Step 1: Declare variables inside a block
+    let a = 10;
+    const b = 20;
+    var c = 30;
+  
+    // Step 2: Reassign within the block
+    a = 15;         // ✅ let can be reassigned
+    // b = 25;      // ❌ Error: Assignment to constant variable (Uncomment to test)
+    c = 35;         // ✅ var can be reassigned
+  
+    console.log("Inside block:");
+    console.log("a =", a);  // 15
+    console.log("b =", b);  // 20
+    console.log("c =", c);  // 35
 }
 
-// Global scope
-console.log(globalVar); // Output: "I'm a global variable"
-console.log(globalLet); // Output: "I'm also global, but scoped with let"
-console.log(globalConst); // Output: "I'm a global constant"
+// Step 3: Reassign outside the block
+console.log("Outside block:");
 
-//Block Scope
-console.log(blockVar);
-console.log(blockLet);
+a = 100; // ❌ Error: a is not defined (Uncomment to test)
+b = 200; // ❌ Error: b is not defined (Uncomment to test)
+c = 300;     // ✅ var is accessible and reassignable outside block
 
-function show(){
-    var functionVar = "I'm a block-scoped var";
-    let functionLet = "I'm a block-scoped let";
-    const functionConst = "I'm a block-scoped const";
-    }
-    show();
-    console.log(functionVar); // Throws ReferenceError
-    console.log(functionLet); // Throws ReferenceError
-    console.log(functionConst); // Throws ReferenceError
-
-// console.log(blockVar);
-// console.log(blockLet);
+console.log("c =", c);    // 300
